@@ -353,8 +353,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   broadcastHub:
-    broadcastingBrains: []
-    _brainsToControl: []
+    broadcastingBrains:
+    - {fileID: 11400000, guid: ac4f062c455e6cc48a1d509cd355e562, type: 2}
+    - {fileID: 11400000, guid: a19a325255bfa7848888dfe598e434c1, type: 2}
+    _brainsToControl:
+    - {fileID: 11400000, guid: ac4f062c455e6cc48a1d509cd355e562, type: 2}
+    - {fileID: 11400000, guid: a19a325255bfa7848888dfe598e434c1, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -533,7 +537,10 @@ MonoBehaviour:
   m_EndDelay: 3
   m_CameraControl: {fileID: 1771596988}
   m_MessageText: {fileID: 102963701}
-  m_TankPrefab: {fileID: 173472, guid: 756d3a6506f2f8241b4e8badde68567a, type: 2}
+  m_Tank1Prefab: {fileID: 1283601899855056, guid: 5370800347c0ea94abb4bec4f75bca7d,
+    type: 2}
+  m_Tank2Prefab: {fileID: 1696961078128470, guid: 6795ab53c0cceff4fbbadf4647cf7938,
+    type: 2}
   m_Tanks:
   - m_PlayerColor: {r: 0.16470589, g: 0.39215687, b: 0.69803923, a: 0}
     m_SpawnPoint: {fileID: 194018016}
