@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,8 +23,10 @@ namespace Complete
         private float m_CurrentLaunchForce;         // The force that will be given to the shell when the fire button is released.
         private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
         private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
+        public float _launchForce = 0;
+        private bool _hasValue = false;
 
-
+        
         private void OnEnable()
         {
             // When the tank is turned on, reset the launch force and the UI
@@ -80,11 +83,25 @@ namespace Complete
 //                Fire ();
 //            }
 //        }
-
-
-        public void Fire (float lunchForce)
+//        
+        
+        private void Update ()
         {
-            if (lunchForce == 0) return;
+            m_AimSlider.value = m_MinLaunchForce;
+            if (_hasValue || !(_launchForce > 0.0f)) return;
+            m_Fired = false;
+            m_CurrentLaunchForce = m_MinLaunchForce;
+
+            m_ShootingAudio.clip = m_ChargingClip;
+            m_ShootingAudio.Play ();
+            _hasValue = true;
+            StartCoroutine(ShootCoroutine());
+        }
+
+
+        private void Fire ()
+        {
+//            if (lunchForce == 0) return;
             // Set the fired flag so only Fire is only called once.
             m_Fired = true;
             // Create an instance of the shell and store a reference to it's rigidbody.
@@ -92,15 +109,46 @@ namespace Complete
                 Instantiate (m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
 
             // Set the shell's velocity to the launch force in the fire position's forward direction.
-//            shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward; 
-            shellInstance.velocity = lunchForce * m_FireTransform.forward; 
+            shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward; 
+//            shellInstance.velocity = lunchForce * m_FireTransform.forward; 
 
             // Change the clip to the firing clip and play it.
             m_ShootingAudio.clip = m_FireClip;
             m_ShootingAudio.Play ();
 
             // Reset the launch force.  This is a precaution in case of missing button events.
-//            m_CurrentLaunchForce = m_MinLaunchForce;
+            m_CurrentLaunchForce = m_MinLaunchForce;
+            _hasValue = false;
+        }
+
+//        private IEnumerator ShootCoroutine(float value, float source, float target, float time)
+//        {
+//            var rate = 1.0f / time;
+//            var i = 0.0f;
+//            while (i <= 1)
+//            {
+//                i += rate * Time.deltaTime;
+//                value = Mathf.Lerp(source, target, i);
+//                m_AimSlider.value = value;
+//                yield return null;
+//            }
+//            value = target;
+//            _hasValue = false;
+//        }
+        private IEnumerator ShootCoroutine()
+        {
+            var rate = 1.0f / (m_ChargeSpeed / 40);
+            var i = 0.0f;
+            var launchValue = _launchForce;
+            while (i <= 1)
+            {
+                i += rate * Time.deltaTime;
+                m_CurrentLaunchForce = Mathf.Lerp(m_MinLaunchForce, launchValue, i);
+                m_AimSlider.value = m_CurrentLaunchForce;
+                yield return null;
+            }
+            m_CurrentLaunchForce = launchValue;
+            Fire ();
         }
     }
 }

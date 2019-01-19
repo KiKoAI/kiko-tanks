@@ -16,7 +16,7 @@ namespace Complete
         private AudioSource m_ExplosionAudio;               // The audio source to play when the tank explodes.
         private ParticleSystem m_ExplosionParticles;        // The particle system the will play when the tank is destroyed.
         private float m_CurrentHealth;                      // How much health the tank currently has.
-        private bool m_Dead;                                // Has the tank been reduced beyond zero health yet?
+        public bool m_Dead;                                // Has the tank been reduced beyond zero health yet?
 
 
         public float GetHealth()
@@ -78,6 +78,7 @@ namespace Complete
         {
             // Set the flag so that this function is only called once.
             m_Dead = true;
+            
 
             // Move the instantiated explosion prefab to the tank's position and turn it on.
             m_ExplosionParticles.transform.position = transform.position;

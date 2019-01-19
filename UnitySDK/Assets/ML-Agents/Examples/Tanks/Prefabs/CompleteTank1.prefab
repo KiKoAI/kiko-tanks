@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7219268d9f71d9e41aa0d66848d23b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: e608e0cc6254df148ada056d8257dce2, type: 2}
+  brain: {fileID: 11400000, guid: ac4f062c455e6cc48a1d509cd355e562, type: 2}
   agentParameters:
     agentCameras: []
     maxStep: 0
@@ -835,6 +835,7 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   Target: {x: 25, y: 0, z: -10}
+  isDead: 0
 --- !u!114 &114128529271892170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1018,6 +1019,7 @@ MonoBehaviour:
   m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
   m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
   m_ExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 2}
+  m_Dead: 0
 --- !u!114 &114603336955138266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1051,6 +1053,7 @@ MonoBehaviour:
   m_MinLaunchForce: 15
   m_MaxLaunchForce: 30
   m_MaxChargeTime: 0.75
+  _launchForce: 0
 --- !u!114 &114625135745786782
 MonoBehaviour:
   m_ObjectHideFlags: 1

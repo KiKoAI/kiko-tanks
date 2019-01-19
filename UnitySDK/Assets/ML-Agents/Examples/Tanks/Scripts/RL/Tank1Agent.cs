@@ -3,17 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Complete;
 using UnityEngine;
+using UnityEngine.UI;
 using MLAgents;
 
 public class Tank1Agent : Agent
 {
 
 	public Vector3 Target;
-	public TankMovement TankMovement; 
 	
 	private TankMovement _tankMovement;
 	private TankHealth _tankHealth;
 	private TankShooting _tankShooting;
+
+	public bool isDead;
 	
 	// Use this for initialization
 	void Start ()
@@ -39,8 +41,9 @@ public class Tank1Agent : Agent
 
 	public override void CollectObservations()
 	{
+		var health = _tankHealth.GetHealth();
 		AddVectorObs(gameObject.transform.position);
-		AddVectorObs(_tankHealth.GetHealth());
+		AddVectorObs(health);
 		AddVectorObs(Target);
 	}
 	
@@ -50,18 +53,21 @@ public class Tank1Agent : Agent
 		
 		_tankMovement.Move(vectorAction[0]);
 		_tankMovement.Turn(vectorAction[1]);
-		_tankShooting.Fire(vectorAction[2] * 30);
+		_tankShooting._launchForce = vectorAction[2] * 20;
 		
-		// Rewards
 		float distanceToTarget = Vector3.Distance(gameObject.transform.position,
 			Target);
 
-		// Reached target
 		if (distanceToTarget < 1.42f)
 		{
 			Monitor.Log("Target", distanceToTarget);
-			SetReward(1.0f);
+			SetReward(10.0f);
 			Done();
+		}
+
+		if (_tankHealth.m_Dead)
+		{
+			SetReward(-10);
 		}
 	}
 }

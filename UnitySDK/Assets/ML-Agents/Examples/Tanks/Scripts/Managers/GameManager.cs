@@ -22,7 +22,7 @@ namespace Complete
         private WaitForSeconds m_StartWait;         // Used to have a delay whilst the round starts.
         private WaitForSeconds m_EndWait;           // Used to have a delay whilst the round or game ends.
         private TankManager m_RoundWinner;          // Reference to the winner of the current round.  Used to make an announcement of who won.
-        private TankManager m_GameWinner;           // Reference to the winner of the game.  Used to make an announcement of who won.
+//        private TankManager m_GameWinner;           // Reference to the winner of the game.  Used to make an announcement of who won.
 
 
         private void Start()
@@ -94,17 +94,20 @@ namespace Complete
             yield return StartCoroutine (RoundEnding());
 
             // This code is not run until 'RoundEnding' has finished.  At which point, check if a game winner has been found.
-            if (m_GameWinner != null)
-            {
-                // If there is a game winner, restart the level.
-                SceneManager.LoadScene (0);
-            }
-            else
-            {
-                // If there isn't a winner yet, restart this coroutine so the loop continues.
-                // Note that this coroutine doesn't yield.  This means that the current version of the GameLoop will end.
-                StartCoroutine (GameLoop ());
-            }
+//            if (m_GameWinner != null)
+//            {
+//                // If there is a game winner, restart the level.
+//                SceneManager.LoadScene (0);
+//            }
+//            else
+//            {
+//                // If there isn't a winner yet, restart this coroutine so the loop continues.
+//                // Note that this coroutine doesn't yield.  This means that the current version of the GameLoop will end.
+//                StartCoroutine (GameLoop ());
+//            }
+            
+            
+            StartCoroutine (GameLoop ());
         }
 
 
@@ -159,7 +162,7 @@ namespace Complete
                 m_RoundWinner.m_Wins++;
 
             // Now the winner's score has been incremented, see if someone has one the game.
-            m_GameWinner = GetGameWinner ();
+//            m_GameWinner = GetGameWinner ();
 
             // Get a message based on the scores and whether or not there is a game winner and display it.
             string message = EndMessage ();
@@ -242,8 +245,8 @@ namespace Complete
             }
 
             // If there is a game winner, change the entire message to reflect that.
-            if (m_GameWinner != null)
-                message = m_GameWinner.m_ColoredPlayerText + " WINS THE GAME!";
+//            if (m_GameWinner != null)
+//                message = m_GameWinner.m_ColoredPlayerText + " WINS THE GAME!";
 
             return message;
         }
