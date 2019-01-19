@@ -222,7 +222,6 @@ GameObject:
   - component: {fileID: 114865091532190394}
   - component: {fileID: 114582417595102812}
   - component: {fileID: 114246738512247294}
-  - component: {fileID: 114119330411053512}
   m_Layer: 9
   m_Name: CompleteTank2
   m_TagString: Untagged
@@ -816,24 +815,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114119330411053512
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1696961078128470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b77a393aacad0234ab66f8f698b9506b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: a19a325255bfa7848888dfe598e434c1, type: 2}
-  agentParameters:
-    agentCameras: []
-    maxStep: 0
-    resetOnDone: 1
-    onDemandDecision: 0
-    numberOfActionsBetweenDecisions: 1
 --- !u!114 &114200321356867706
 MonoBehaviour:
   m_ObjectHideFlags: 1
