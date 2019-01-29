@@ -97,12 +97,7 @@ public class Tank1Agent : Agent
 		}
 		
 		var distance = Vector3.Distance(gameObject.transform.position, _enemyPosition);
-		if (distance < 10)
-		{
-			AddReward(5.0f);
-			Done();
-			gameObject.SetActive (false);
-		}
+		
 		if (Math.Abs(distance - _distanceToEnemy) > 0.001)
 		{
 			if (distance > _tempDistanceToEnemy)
