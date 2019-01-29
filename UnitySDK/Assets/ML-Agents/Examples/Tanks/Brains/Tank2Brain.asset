@@ -16,6 +16,7 @@ MonoBehaviour:
     numStackedVectorObservations: 1
     vectorActionSize: 01000000
     cameraResolutions: []
-    vectorActionDescriptions: []
+    vectorActionDescriptions:
+    - 
     vectorActionSpaceType: 0
   model: {fileID: 0}

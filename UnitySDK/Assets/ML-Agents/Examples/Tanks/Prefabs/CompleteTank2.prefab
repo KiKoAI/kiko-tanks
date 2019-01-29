@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 114865091532190394}
   - component: {fileID: 114582417595102812}
   - component: {fileID: 114246738512247294}
+  - component: {fileID: 114543090163261026}
   m_Layer: 9
   m_Name: CompleteTank2
   m_TagString: Untagged
@@ -863,6 +864,7 @@ MonoBehaviour:
   m_MinLaunchForce: 15
   m_MaxLaunchForce: 30
   m_MaxChargeTime: 0.75
+  _launchForce: 0
 --- !u!114 &114381068382920938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -981,6 +983,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114543090163261026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696961078128470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7219268d9f71d9e41aa0d66848d23b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: ac4f062c455e6cc48a1d509cd355e562, type: 2}
+  agentParameters:
+    agentCameras: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  IsWinner: 0
+  HasAttacked: 0
+  AttackPoint: 0
 --- !u!114 &114582417595102812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -998,6 +1021,8 @@ MonoBehaviour:
   m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
   m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
   m_ExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 2}
+  m_TankAgent: {fileID: 0}
+  m_Dead: 0
 --- !u!114 &114723732766624098
 MonoBehaviour:
   m_ObjectHideFlags: 1

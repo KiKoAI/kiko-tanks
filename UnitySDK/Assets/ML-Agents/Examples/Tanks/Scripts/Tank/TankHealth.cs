@@ -12,6 +12,7 @@ namespace Complete
         public Color m_ZeroHealthColor = Color.red;         // The color the health bar will be when on no health.
         public GameObject m_ExplosionPrefab;                // A prefab that will be instantiated in Awake, then used whenever the tank dies.
         
+        public Tank1Agent m_TankAgent;
         
         private AudioSource m_ExplosionAudio;               // The audio source to play when the tank explodes.
         private ParticleSystem m_ExplosionParticles;        // The particle system the will play when the tank is destroyed.
@@ -34,6 +35,8 @@ namespace Complete
 
             // Disable the prefab so it can be activated when it's required.
             m_ExplosionParticles.gameObject.SetActive (false);
+
+            m_TankAgent = GetComponent<Tank1Agent>();
         }
 
 
@@ -52,6 +55,7 @@ namespace Complete
         {
             // Reduce current health by the amount of damage done.
             m_CurrentHealth -= amount;
+            
 
             // Change the UI elements appropriately.
             SetHealthUI ();
@@ -60,6 +64,7 @@ namespace Complete
             if (m_CurrentHealth <= 0f && !m_Dead)
             {
                 OnDeath ();
+                
             }
         }
 
@@ -91,7 +96,7 @@ namespace Complete
             m_ExplosionAudio.Play();
 
             // Turn the tank off.
-            gameObject.SetActive (false);
+//            gameObject.SetActive (false);
         }
     }
 }

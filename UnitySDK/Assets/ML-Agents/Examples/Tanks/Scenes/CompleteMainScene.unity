@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   broadcastHub:
     broadcastingBrains:
-    - {fileID: 11400000, guid: ac4f062c455e6cc48a1d509cd355e562, type: 2}
+    - {fileID: 11400000, guid: e608e0cc6254df148ada056d8257dce2, type: 2}
     _brainsToControl:
     - {fileID: 11400000, guid: ac4f062c455e6cc48a1d509cd355e562, type: 2}
   maxSteps: 0
@@ -574,12 +574,14 @@ MonoBehaviour:
     m_ColoredPlayerText: 
     m_Instance: {fileID: 0}
     m_Wins: 0
+    m_Transform: {fileID: 0}
   - m_PlayerColor: {r: 0.8980392, g: 0.18039216, b: 0.15686275, a: 0}
     m_SpawnPoint: {fileID: 2083660209}
     m_PlayerNumber: 2
     m_ColoredPlayerText: 
     m_Instance: {fileID: 0}
     m_Wins: 0
+    m_Transform: {fileID: 0}
 --- !u!4 &1304999366
 Transform:
   m_ObjectHideFlags: 0

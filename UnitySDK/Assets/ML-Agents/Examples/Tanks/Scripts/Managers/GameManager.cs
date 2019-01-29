@@ -278,5 +278,18 @@ namespace Complete
                 m_Tanks[i].DisableControl();
             }
         }
+
+        public TankManager GetTankManager(int id)
+        {
+            foreach (TankManager tank in m_Tanks)
+            {
+                if (tank.m_PlayerNumber == id)
+                {
+                    return tank;
+                }
+            }
+
+            return null;
+        }
     }
 }
