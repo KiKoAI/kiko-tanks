@@ -1,6 +1,6 @@
 default:
     trainer: online_bc
-    brain_to_imitate: <Your_Brain_Asset_Name>
+    brain_to_imitate: TankPlayer
     batch_size: 64
     time_horizon: 64
     summary_freq: 1000
